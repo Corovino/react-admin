@@ -1,59 +1,8 @@
 import {  createStore, combineReducers  } from 'redux';
-import uuid  from 'uuid';
 
 
-const addExpense = ({
-    description = '',
-    note ='',
-    amount = 0,
-    createAt = 0
-
-} = {}) => ({
-    type: 'ADD_EXPENSE',
-    expense:{
-        id:uuid(),
-        description,
-        note,
-        amount,
-        createAt
-    }
-});
-
-const removeExpense = ( { id } = {}) => ({
-    type: 'REMOVE_EXPENSE',
-    id
-});
 
 
-const editExpense =  ( id, updates ) => ({
-    type: 'EDIT_EXPENSE',
-    id,
-    updates
-});
-
-
-const setTextFilter = (text = '') => ({
-    type: 'SET_TEXT_FILER',
-    text
-});
-
-const sortByAmount = () => ({
-     type:'SORT_BY_AMOUNT'
-});
-   
-const sortByDate = () => ({
-    type: 'SORT_BY_DATE'
-});
-
-const setStartDate = (startDate = undefined) => ({
-    type:'SET_START_DATE',
-    startDate
-})
-
-const setEndDate = (endDate) => ({
-    type: 'SET_END_DATE',
-    endDate  
-})
 
 
 
@@ -147,7 +96,19 @@ const  store = createStore(
 );
 
 const getvisibleExpenses = ( expenses, {  text, sortBy, startDate, endDate  } ) => {
-    return expenses;
+    return expenses.filter( expense => {
+         const startDateMatch   = typeof startDate !== 'number' ||  expense.createAt >= startDate;
+         const endDateMatch     = typeof endDate !== 'number' || expense.createAt >= endDate;
+         const textMatch        = expense.description.toLowerCase().includes(text.toLowerCase());;
+
+               return  startDateMatch && endDateMatch && textMatch;
+    }).sort( ( a, b ) => {
+        if(sortBy === 'date'){
+            return a.createAt < b.createAt ? 1 : -1;
+        }else if ( sortBy === 'amount' ){
+            return a.amount < b.amount ? 1 : -1;
+        }
+    } );
 };
 
 store.subscribe(() => {
