@@ -3,11 +3,11 @@
 const expensesReducersDefaulstate = [];
 
 export default (state = expensesReducersDefaulstate, action) => {
-
+    
     switch (action.type) {
 
         case 'ADD_EXPENSE':
-            return [...state, action.expesive];
+            return [...state, action.expense];
             break;
         case 'REMOVE_EXPENSE':
             return state.filter(({ id }) => id !== action.id)

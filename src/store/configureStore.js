@@ -9,6 +9,5 @@ export default () => {
             filters: filtersReducer
         })
     );
-
     return store;
 };
