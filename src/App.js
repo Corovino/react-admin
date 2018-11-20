@@ -14,12 +14,12 @@ const store = configureStore();
 
 store.dispatch(addExpense({ description: 'Water bill' }));
 store.dispatch(addExpense({ description: 'Gas bill' }));
-store.dispatch(setTextFilter('bill'));
+store.dispatch(setTextFilter('Water'));
 
 const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
-console.log(visibleExpenses);
+console.log("f",state);
 
 class App extends Component {
     render() {
