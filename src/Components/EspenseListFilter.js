@@ -5,6 +5,7 @@ import { setTextFilter } from '../actions/filters';
 
 const onChangeHandler = (e , props) => {
     const inputValue = e.target.value;
+    console.log(inputValue);
     props.dispatch(setTextFilter(inputValue));
 }
 

@@ -20,6 +20,7 @@ const state = store.getState();
 const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 
 console.log("f",state);
+console.log("f",visibleExpenses);
 
 class App extends Component {
     render() {
