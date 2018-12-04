@@ -64,6 +64,8 @@ class ExpenseForm extends Component {
                             onDateChange={this._onAmountChange}
                             focused={this.state.calendarFocused}
                             onFocusChange={this._onFocusChange}
+                            numberOfMonths={1}
+                            isOutsideRange=
                         />
                         <textarea 
                             placeholder="Add note for your expense (optional)"
