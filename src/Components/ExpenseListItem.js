@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
           </Link>  
           <p>{amount} - {createAt}</p>
           <button onClick={ () => {
-              console.log(id);
+              
                  dispatch(removeExpense({ id }));
               }
           }>Remove</button>

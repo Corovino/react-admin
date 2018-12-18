@@ -8,7 +8,7 @@ const now = moment();
 class ExpenseForm extends Component {
         constructor(props) {
             super(props);
-            console.log("g",props);
+            
             this.state = {
                 description: props.expense ? props.expense.description : '',
                 note: props.expense ? props.expense.note : '',
